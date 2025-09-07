@@ -22,8 +22,8 @@ public class DaoProducto {
 			cst.setString(1, producto.getCodigo());
 			cst.setString(2, producto.getNombre());
 			cst.setBigDecimal(3, producto.getPrecio());
-			cst.setString(4, producto.getStock());
-			cst.setString(5, producto.getIdCategoria());
+			cst.setInt(4, producto.getStock());
+			cst.setInt(5, producto.getIdCategoria());
 			cst.execute();
 		}
 		catch (Exception e) {
@@ -31,3 +31,4 @@ public class DaoProducto {
 		}
 	}
 }
+
