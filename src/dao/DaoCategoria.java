@@ -26,10 +26,32 @@ public class DaoCategoria {
 		try (Connection cn = DriverManager.getConnection(host+dbName, user, pass);
 				PreparedStatement st = cn.prepareStatement(query)){
 				
-					st.setString(1,categoria.GetNombre());
+					st.setString(1,categoria.getNombre());
 					filas = st.executeUpdate();
 					
-			System.out.println("Categoria agregada correctamente." +"Filas agregadas: " + filas);
+			System.out.println("Categoria agregada correctamente." + " Filas agregadas: " + filas);
+			
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return filas;
+	}
+	public int EliminarCategoria (Categoria categoria) {
+		int filas = 0;
+		String query = "DELETE FROM categoria WHERE idcategoria = ?";
+		
+		try (Connection cn = DriverManager.getConnection(host+dbName, user, pass);
+				PreparedStatement st = cn.prepareStatement(query)){
+					
+					cn.setAutoCommit(false);				
+					st.setInt(1,categoria.getIdCategoria());
+					filas = st.executeUpdate();
+					cn.commit();
+			
+				System.out.println("Categoria eliminada correctamente." + " Filas agregadas: " + filas);
 			
 			
 		}
