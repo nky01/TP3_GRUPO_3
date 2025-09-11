@@ -1,14 +1,27 @@
 package main;
 
 import dao.DaoProducto;
+import dao.DaoCategoria;
+import entidad.Categoria;
 import entidad.Producto;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class principal {
 
 	public static void main(String[] args) {
-		
+		DaoCategoria dc = new DaoCategoria();
 		DaoProducto dp = new DaoProducto();
+		
+		Categoria [] categorias = new Categoria[] {
+				new Categoria("Alimentos"),
+				new Categoria("Electrodomesticos"),
+				new Categoria("Limpieza"),
+				new Categoria("Tecnologia")
+		};
+		
+		
+		
 		Producto[] productos = new Producto[] {
 	            new Producto("COD-001", "Producto1", BigDecimal.valueOf(125.002), 2, 3),
 	            new Producto("COD-002", "Producto2", BigDecimal.valueOf(230.50), 15, 2),
@@ -21,9 +34,23 @@ public class principal {
 	            new Producto("COD-009", "Producto9", BigDecimal.valueOf(815.24), 13, 3),
 	            new Producto("COD-010", "Producto10", BigDecimal.valueOf(615.1), 69, 1)
 		};
-		for (Producto p : productos) {
-	            dp.ejecutarProcedimientoAlmacenado(p);
-		}
+		
+//		for (Categoria c : categorias) {
+//			dc.AgregarCategoria(c);
+//		}
+//		
+//		
+//		
+//		for (Producto p : productos) {
+//	            dp.ejecutarProcedimientoAlmacenado(p);
+//		}
 		System.out.println("Los productos se cargaron correctamente!");	
+		
+		ArrayList<Categoria> lcategorias = dc.ListarCategorias();
+		for(Categoria c : lcategorias) {
+			System.out.println(c.toString());
+		}
 	}
+	
+	
 }

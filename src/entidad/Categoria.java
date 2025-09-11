@@ -9,10 +9,10 @@ public class Categoria
 	private String Nombre;
 	
 	
-	public Categoria(int idCategoria, String nombre) 
+	public Categoria(String nombre) 
 	{
-		this.idCategoria = idCategoria;
-		Nombre = nombre;
+		this.Nombre = nombre;
+		
 	}
 	public Categoria () {}
 	
