@@ -42,7 +42,9 @@ public class DaoProducto {
              PreparedStatement ps = cn.prepareStatement(sql)) {
 
             ps.setString(1, codigo);
+            System.out.println("Producto Eliminado");
             return ps.executeUpdate() > 0;
+            
 
         } catch (SQLException e) {
             System.out.println("Error al eliminar producto: " + e.getMessage());

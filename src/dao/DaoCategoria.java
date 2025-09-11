@@ -61,7 +61,7 @@ public class DaoCategoria {
 		return filas;
 	}
 	
-	public Categoria ModificarCategoria (int id, Categoria categoria) {
+	public Categoria ModificarCategoria (Categoria categoria) {
 		
 		int filas = 0;
 		String query = "UPDATE categorias SET Nombre = ? WHERE idcategoria = ?";
@@ -70,7 +70,7 @@ public class DaoCategoria {
 					
 				
 					st.setString(1, categoria.getNombre());
-					st.setInt(2, id);
+					st.setInt(1, categoria.getIdCategoria());
 					filas = st.executeUpdate();
 					
 					System.out.println("Categoria modificada correctamente." + filas);

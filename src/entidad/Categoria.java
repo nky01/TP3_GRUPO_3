@@ -9,8 +9,9 @@ public class Categoria
 	private String Nombre;
 	
 	
-	public Categoria(String nombre) 
+	public Categoria(int idcategoria, String nombre) 
 	{
+		this.idCategoria = idcategoria;
 		this.Nombre = nombre;
 		
 	}
