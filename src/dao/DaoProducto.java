@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import entidad.Producto;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 
 public class DaoProducto {
 
@@ -71,5 +74,33 @@ public class DaoProducto {
             e.printStackTrace();
             return false;
         }
+    }
+    
+ // LISTADO
+    public ArrayList<Producto> listarProductos() {
+        ArrayList<Producto> lProductos = new ArrayList<Producto>();
+        String query = "SELECT * FROM productos";
+        
+        try (Connection cn = DriverManager.getConnection(host + dbName, user, pass);
+             PreparedStatement st = cn.prepareStatement(query)) {
+            
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Producto p = new Producto();
+                p.setCodigo(rs.getString("Codigo"));
+                p.setNombre(rs.getString("Nombre"));
+                p.setPrecio(rs.getBigDecimal("Precio"));
+                p.setStock(rs.getInt("Stock"));
+                p.setIdCategoria(rs.getInt("IdCategoria"));
+                
+                lProductos.add(p);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("No se pudo listar los productos");
+        }
+        
+        return lProductos;
     }
 }
