@@ -70,7 +70,7 @@ public class DaoCategoria {
 					
 				
 					st.setString(1, categoria.getNombre());
-					st.setInt(1, categoria.getIdCategoria());
+					st.setInt(2, categoria.getIdCategoria());
 					filas = st.executeUpdate();
 					
 					System.out.println("Categoria modificada correctamente." + filas);
